@@ -1,0 +1,1034 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open When... ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@400;500;600&display=swap');
+
+:root {
+    --cream: #faf5ed;
+    --paper: #fffaf1;
+    --rose: #bd8290;
+    --ink: #75565e;
+    --muted: #ad9295;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO49H_903akUc2jSjzbE-DNorGYNWJGUn9E7p6VY-39w&s=10");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* TASHU'S HEART + OPEN PROMPT */
+.open-prompt{display:flex;flex-direction:column;align-items:center;margin:24px auto 5px;text-align:center;animation:promptAppear 1s ease both}
+.heart-wrap{position:relative;width:76px;height:70px;display:grid;place-items:center;margin-bottom:7px}
+.beating-heart{display:block;color:#cc8292;font-size:43px;line-height:1;text-shadow:0 5px 18px #d78e9b66;transform-origin:center;animation:heartbeat 1.25s ease-in-out infinite}
+.heart-glow{position:absolute;width:43px;height:43px;border-radius:50%;background:#e9aebc55;filter:blur(13px);animation:heartGlow 1.25s ease-in-out infinite}
+.heart-spark{position:absolute;color:#bd8290;animation:sparkleFloat 2.8s ease-in-out infinite}
+.spark-one{top:3px;right:2px;font-size:13px}
+.spark-two{bottom:6px;left:2px;font-size:15px;animation-delay:.5s}
+.spark-three{top:12px;left:7px;font-size:10px;animation-delay:1s}
+.open-prompt-title{color:#9d6875;font:italic 19px 'Playfair Display',serif;letter-spacing:.3px}
+.open-prompt-subtitle{margin-top:5px;color:#ad9295;font-size:10px;letter-spacing:.5px}
+.tiny-arrow{margin-top:10px;color:#c58c96;font-size:16px;animation:arrowNudge 1.5s ease-in-out infinite}
+@keyframes heartbeat{0%,35%,65%,100%{transform:scale(1)}15%{transform:scale(1.18)}50%{transform:scale(1.1)}}
+@keyframes heartGlow{0%,100%{opacity:.45;transform:scale(.85)}50%{opacity:.9;transform:scale(1.2)}}
+@keyframes sparkleFloat{0%,100%{opacity:.45;transform:translateY(0) rotate(0)}50%{opacity:1;transform:translateY(-6px) rotate(18deg)}}
+@keyframes arrowNudge{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(5px);opacity:1}}
+@keyframes promptAppear{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+
+/* HOME */
+
+header {
+    text-align: center;
+    padding: 55px 20px 30px;
+}
+
+.top-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--rose);
+}
+
+h1 {
+    font: 400 clamp(43px, 11vw, 65px) 'Playfair Display';
+    margin: 18px 0;
+}
+
+h1 em {
+    color: #c58c96;
+}
+
+.subtitle {
+    max-width: 300px;
+    margin: auto;
+    font-size: 12px;
+    line-height: 2;
+    color: var(--muted);
+}
+
+.container {
+    width: min(100% - 40px, 520px);
+    margin: auto;
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0 25px;
+}
+
+.heading h2 {
+    font: 400 22px 'Playfair Display';
+}
+
+.heading span {
+    font-size: 10px;
+    color: var(--muted);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 17px;
+}
+
+.card {
+    cursor: pointer;
+    text-align: center;
+}
+
+.card-label {
+    font: 500 14px 'Playfair Display';
+    margin-top: 13px;
+}
+
+.card-caption {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+/* HOME ENVELOPES */
+
+.mini-envelope {
+    position: relative;
+    height: 120px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px #8d62651c;
+    transition: .3s;
+}
+
+.card:hover .mini-envelope {
+    transform: translateY(-5px) rotate(-1deg);
+}
+
+.card:nth-child(1) .mini-envelope {background:#e8c8cc}
+.card:nth-child(2) .mini-envelope {background:#e9d8bd}
+.card:nth-child(3) .mini-envelope {background:#e5cbd7}
+.card:nth-child(4) .mini-envelope {background:#e9d1bd}
+.card:nth-child(5) .mini-envelope {background:#dcd9c4}
+.card:nth-child(6) .mini-envelope {background:#ddd0df}
+
+.mini-envelope::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(140deg,transparent 49%,#ffffff33 50%);
+    z-index:1;
+}
+
+.mini-seal {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:#bd8290;
+    color:white;
+    border-radius:50%;
+    width:28px;
+    height:28px;
+    display:grid;
+    place-items:center;
+    font-size:13px;
+    z-index:2;
+}
+
+
+/* PLAYFUL ENVELOPE MICRO-INTERACTIONS */
+.card .mini-envelope::after{content:"♡";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.5);color:#fffaf3;font-size:20px;opacity:0;z-index:3;transition:.35s ease;pointer-events:none}
+.card:hover .mini-envelope::after,.card:focus-visible .mini-envelope::after{opacity:.9;transform:translate(-50%,-50%) scale(1.1)}
+.card:active .mini-envelope{transform:scale(.96) rotate(1deg)}
+.card:focus-visible{outline:2px solid #bd8290;outline-offset:5px;border-radius:6px}
+
+/* HOME FOOTER */
+
+.bottom-note {
+    text-align:center;
+    padding:45px 15px;
+    margin-top:25px;
+    border-top:1px solid #e9dcd5;
+}
+
+.bottom-note p {
+    font:italic 17px 'Playfair Display';
+    line-height:1.8;
+    color:#a77a83;
+}
+
+.bottom-note button {
+    margin-top:18px;
+    padding:12px 25px;
+    background:#e9c5cc;
+    border:0;
+    border-radius:30px;
+    color:#805964;
+    font-size:10px;
+    letter-spacing:1px;
+    cursor:pointer;
+}
+
+footer {
+    text-align:center;
+    padding:10px 10px 35px;
+    color:#b69a9b;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+/* EXPERIENCE SCREEN */
+
+.experience {
+    position:fixed;
+    inset:0;
+    background:#f8f0e9;
+    z-index:10;
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    overflow-y:auto;
+}
+
+.experience.active {
+    display:flex;
+    animation:screenFade .5s ease;
+}
+
+@keyframes screenFade {
+    from {opacity:0}
+    to {opacity:1}
+}
+
+.back-button {
+    position:absolute;
+    top:25px;
+    left:22px;
+    border:0;
+    background:transparent;
+    color:#9d777f;
+    font-size:12px;
+    cursor:pointer;
+    letter-spacing:1px;
+}
+
+.scene-title {
+    font:italic 18px 'Playfair Display';
+    color:#a77b83;
+    margin-bottom:45px;
+    text-align:center;
+}
+
+/* MAIN ENVELOPE */
+
+.scene {
+    width:min(84vw,320px);
+    height:210px;
+    position:relative;
+    perspective:1000px;
+    flex-shrink:0;
+    margin-bottom:25px;
+}
+
+.envelope-body {
+    position:absolute;
+    inset:0;
+    background:#e7c5ca;
+    border-radius:4px;
+    z-index:1;
+    box-shadow:0 15px 35px #74545a20;
+}
+
+.scene[data-color="gold"] .envelope-body {background:#e9d8bc}
+.scene[data-color="lilac"] .envelope-body {background:#e3cbd7}
+.scene[data-color="peach"] .envelope-body {background:#e9cdb9}
+.scene[data-color="sage"] .envelope-body {background:#d9d9c4}
+.scene[data-color="lavender"] .envelope-body {background:#dcd0df}
+
+/* PAPER INSIDE ENVELOPE */
+
+.inner-letter {
+    position:absolute;
+    width:88%;
+    height:185px;
+    left:6%;
+    bottom:8px;
+    background:#fffaf1;
+    z-index:2;
+    padding:15px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    color:#75545e;
+    font:20px 'Caveat';
+    font-weight:600;
+    text-align:center;
+    box-shadow:0 -2px 8px #76545a0d;
+    transform:translateY(0);
+    transition:transform 1.3s cubic-bezier(.2,.75,.25,1);
+}
+
+/* ENVELOPE FRONT */
+
+.front-left,
+.front-right,
+.front-bottom {
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.front-left {
+    background:#dfb8bf;
+    clip-path:polygon(0 0,50% 55%,0 100%);
+    z-index:4;
+}
+
+.front-right {
+    background:#eacdd0;
+    clip-path:polygon(100% 0,50% 55%,100% 100%);
+    z-index:4;
+}
+
+.front-bottom {
+    background:#e3bec5;
+    clip-path:polygon(0 100%,50% 49%,100% 100%);
+    z-index:4;
+}
+
+.scene[data-color="gold"] .front-left {background:#dfc8a7}
+.scene[data-color="gold"] .front-right {background:#efdfc6}
+.scene[data-color="gold"] .front-bottom {background:#e7d0b1}
+
+.scene[data-color="lilac"] .front-left {background:#d8bacb}
+.scene[data-color="lilac"] .front-right {background:#ead7e2}
+.scene[data-color="lilac"] .front-bottom {background:#dec3d4}
+
+.scene[data-color="peach"] .front-left {background:#dcbda8}
+.scene[data-color="peach"] .front-right {background:#efd8c8}
+.scene[data-color="peach"] .front-bottom {background:#e4c7b2}
+
+.scene[data-color="sage"] .front-left {background:#c8cbb3}
+.scene[data-color="sage"] .front-right {background:#e7e4d1}
+.scene[data-color="sage"] .front-bottom {background:#d7d7c0}
+
+.scene[data-color="lavender"] .front-left {background:#cfc0d3}
+.scene[data-color="lavender"] .front-right {background:#e9ddeb}
+.scene[data-color="lavender"] .front-bottom {background:#d9cbdc}
+
+/* FLAP */
+
+.flap {
+    position:absolute;
+    inset:0;
+    background:#f0d4d6;
+    clip-path:polygon(0 0,100% 0,50% 57%);
+    transform-origin:top center;
+    transform:rotateX(0);
+    transition:transform .85s ease;
+    z-index:6;
+}
+
+.scene[data-color="gold"] .flap {background:#f1e0c6}
+.scene[data-color="lilac"] .flap {background:#eedce6}
+.scene[data-color="peach"] .flap {background:#f2dacc}
+.scene[data-color="sage"] .flap {background:#e5e3d0}
+.scene[data-color="lavender"] .flap {background:#e9deeb}
+
+/* WAX SEAL */
+
+.wax {
+    position:absolute;
+    top:48%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:#b77886;
+    color:white;
+    display:grid;
+    place-items:center;
+    z-index:7;
+    font-size:16px;
+    box-shadow:0 3px 8px #6d414a35;
+    transition:opacity .35s,transform .4s;
+}
+
+/* OPENING STATE */
+
+.scene.opening .flap {
+    transform:rotateX(180deg);
+    z-index:1;
+}
+
+.scene.opening .wax {
+    opacity:0;
+    transform:translate(-50%,-50%) scale(.3);
+}
+
+/* LETTER EMERGES SMOOTHLY */
+
+.scene.opening .inner-letter {
+    transform:translateY(-150px);
+}
+
+/* INDIVIDUAL ANIMATION STYLES */
+
+.scene.style-1.opening .inner-letter {
+    transition-duration:1.5s;
+}
+
+.scene.style-2.opening {
+    animation:softBounce .8s ease;
+}
+
+.scene.style-3.opening .inner-letter {
+    transform:translateY(-150px) rotate(2deg);
+}
+
+.scene.style-4.opening {
+    animation:littlePop .6s ease;
+}
+
+.scene.style-5.opening .inner-letter {
+    transform:translateY(-150px) scaleY(1.03);
+}
+
+.scene.style-6.opening {
+    animation:gentleRock 1s ease;
+}
+
+@keyframes softBounce {
+    0%,100% {transform:translateY(0)}
+    50% {transform:translateY(-9px)}
+}
+
+@keyframes littlePop {
+    0%,100% {transform:scale(1)}
+    50% {transform:scale(1.04)}
+}
+
+@keyframes gentleRock {
+    0%,100% {transform:rotate(0)}
+    30% {transform:rotate(-2deg)}
+    70% {transform:rotate(2deg)}
+}
+
+/* LETTER READING SCREEN */
+
+.reading {
+    display:none;
+    width:min(100%,390px);
+    animation:readingIn .8s ease;
+}
+
+.reading.active {
+    display:block;
+}
+
+@keyframes readingIn {
+    from {
+        opacity:0;
+        transform:translateY(35px) scale(.96);
+    }
+    to {
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.paper {
+    position:relative;
+    min-height:330px;
+    padding:42px 27px 30px;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 31px,
+            #eadfd5 32px
+        ),
+        #fffaf1;
+    box-shadow:0 15px 45px #71545a18;
+    border:1px solid #eee4d9;
+    transform:rotate(-.5deg);
+}
+
+.paper::before {
+    content:"✿";
+    position:absolute;
+    top:13px;
+    left:18px;
+    color:#d5a2a9;
+    font-size:20px;
+}
+
+.paper-icon {
+    text-align:center;
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.paper h2 {
+    font:500 27px 'Playfair Display';
+    text-align:center;
+    color:#704b57;
+    margin-bottom:18px;
+}
+
+.paper-message {
+    font:600 24px/1.55 'Caveat';
+    color:#514047;
+    white-space:pre-line;
+    text-align:center;
+    min-height:105px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:4px 2px;
+    text-shadow:0 1px 0 #fffaf1;
+}
+
+.signature {
+    font:22px 'Caveat';
+    text-align:right;
+    color:#8f5968;
+    margin-top:16px;
+}
+
+.page-controls {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:25px;
+}
+
+.page-controls button {
+    border:1px solid #e6cbd0;
+    border-radius:30px;
+    padding:10px 17px;
+    background:#fffaf1;
+    color:#916a73;
+    font-size:11px;
+    cursor:pointer;
+}
+
+.page-controls button:disabled {
+    opacity:.35;
+    cursor:default;
+}
+
+.page-number {
+    font-size:10px;
+    color:#b08b91;
+    letter-spacing:1px;
+}
+
+.close-reading {
+    display:block;
+    margin:22px auto 0;
+    border:0;
+    background:transparent;
+    color:#a47b83;
+    font-size:11px;
+    cursor:pointer;
+    letter-spacing:1px;
+}
+
+/* MOBILE */
+
+@media(max-width:370px) {
+    .scene {
+        width:90vw;
+        height:185px;
+    }
+
+    .paper {
+        min-height:350px;
+        padding:42px 20px 30px;
+    }
+
+    .paper-message {
+        font-size:21px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="top-label">A LITTLE SOMETHING FOR TASHU</div>
+    <h1>Dear <em>Tashu...</em></h1>
+    <p class="subtitle">
+        A tiny collection of letters, made just for you.
+        Pick one, break the seal, and see what is inside. ♡
+    </p>
+    <div style="margin-top:22px;color:#c58c96">✿ &nbsp; ♡ &nbsp; ✿</div>
+
+    <div class="open-prompt" aria-label="Open the letters">
+        <div class="heart-wrap">
+            <span class="heart-glow"></span>
+            <span class="beating-heart">♥</span>
+            <span class="heart-spark spark-one">✦</span>
+            <span class="heart-spark spark-two">♡</span>
+            <span class="heart-spark spark-three">✧</span>
+        </div>
+        <div class="open-prompt-title">open the letters</div>
+        <div class="open-prompt-subtitle">a little note is waiting for you, Tashu</div>
+        <div class="tiny-arrow">↓</div>
+    </div>
+
+</header>
+
+<main class="container">
+
+    <div class="heading">
+        <h2>Your little letters</h2>
+        <span>01 — 06</span>
+    </div>
+
+    <section class="grid" id="grid"></section>
+
+    <div class="bottom-note">
+        <p>
+            "A little reminder that<br>
+            you're appreciated, always."
+        </p>
+        <button onclick="openSurprise()">
+            OPEN YOUR SURPRISE ♡
+        </button>
+    </div>
+
+</main>
+
+<footer>
+    MADE WITH LOVE & A LITTLE BIT OF MAGIC
+</footer>
+
+
+<!-- ENVELOPE EXPERIENCE -->
+
+<div class="experience" id="experience">
+
+    <button class="back-button" onclick="goHome()">
+        ← BACK
+    </button>
+
+    <div class="scene-title" id="sceneTitle">
+        A little letter for Tashu ♡
+    </div>
+
+    <!-- ENVELOPE ANIMATION -->
+
+    <div class="scene" id="scene">
+
+        <div class="envelope-body"></div>
+
+        <div class="inner-letter">
+            A little note, just for you ♡
+        </div>
+
+        <div class="front-left"></div>
+        <div class="front-right"></div>
+        <div class="front-bottom"></div>
+
+        <div class="flap"></div>
+
+        <div class="wax">♡</div>
+
+    </div>
+
+    <!-- READING EXPERIENCE -->
+
+    <div class="reading" id="reading">
+
+        <div class="paper">
+
+            <div class="paper-icon" id="paperIcon">💌</div>
+
+            <h2 id="paperTitle"></h2>
+
+            <div class="paper-message" id="paperMessage"></div>
+
+            <div class="signature">
+                with love, always ♡
+            </div>
+
+        </div>
+
+        <div class="page-controls">
+
+            <button id="prev" onclick="changePage(-1)">
+                ← Previous
+            </button>
+
+            <span class="page-number" id="pageNumber">
+                01 / 02
+            </span>
+
+            <button id="next" onclick="changePage(1)">
+                Next →
+            </button>
+
+        </div>
+
+        <button class="close-reading" onclick="goHome()">
+            CLOSE LETTER ✕
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* LETTER CONTENT */
+
+const letters = [
+{
+icon:"🌷", label:"When you're sad", caption:"A tiny mood-lifter", color:"pink",
+pages:[
+{title:"Hey, Tashu ♡", text:`dekho ups and downs aate rehte hai and i know tum accche se handle kar logi jabbhi heavy feel ho mai hu tere liyee hameshaa alwayss cattu jiii meri rasmalaii♡`},
+{title:"Pocket sunshine", text:`Tashu, even cloudy days pass.
+Sending you a pocket-sized dose of sunshine. ☀️`}
+]
+},
+{
+icon:"☀️", label:"When you're happy", caption:"Main character moment", color:"gold",
+pages:[
+{title:"HAA YE HUI NA BAAT!", text:`hamesha happy happy rehna meri kuchie puchie buu aapke face pe smaile badi pyari lagti haii..hehe i love itttttt
+`},
+{title:"Keep glowing", text:`Your happy era looks good, Tashu.
+Please continue being everyone’s favourite plot twist. ♡`}
+]
+},
+{
+icon:"💌", label:"When you miss me", caption:"Obviously you do", color:"lilac",
+pages:[
+{title:"Missing me, Tashu?", text:`bas yaad karna mai hamesha hu aap ke liye aapke dil me hehe... ♡`},
+{title:"", text:`1000x pucchieee hehe.
+`}
+]
+},
+{
+icon:"🍓", label:"When you're bored", caption:"Certified fun emergency", color:"peach",
+pages:[
+{title:"Tashu, emergency!", text:`are mere rehte no boriyar bubuuuu
+😭`},
+{title:"Your side quest", text:`beyy jijhakkk messge maar dena call kardena hehe bass
+😂`}
+]
+},
+{
+icon:"⭐", label:"When you doubt yourself", caption:"A reminder from me", color:"sage",
+pages:[
+{title:"abey sunn, Tashu ♡", text:`self doubt kabhi aane mat dena mere liye aap haamesha sabse zyada chamakne wale sittare hai meri jaan.kabhi kabhi acchi chizo ko hone me time lagta par hote zarur hai...
+`},
+
+]
+},
+{
+icon:"🦋", label:"When you need someone", caption:"No perfect words needed", color:"lavender",
+pages:[
+{title:"I'm here, Tashu", text:`jab bhi kuch batana ho heavy feel ho rha hoo mai huu okii jii meri pyari laddu kuch bhi batna ko mai aapko kabhi judge nahi karunga air mujhee bht accha lagta aapki baatein sunna hehe so yahh...
+♡`},
+{title:"taarefienn", text:`kya hii kahee aap hai itne accche itne stunning gorgeous mind blowing meri sonii laddu meri gudiya meri billu raniii!! fantastic charming ssoo charismatic aap sirff mere hoo bubu samjhe naa aap i love you sooo muchhhhhhhh hehehwhehe
+🦋`}
+]
+}
+];
+
+let currentLetter = null;
+let currentPage = 0;
+let timers = [];
+
+
+/* HOMEPAGE ENVELOPES */
+
+const grid = document.getElementById("grid");
+
+letters.forEach((item,index)=>{
+
+    const card = document.createElement("div");
+
+    card.className = "card";
+    card.tabIndex = 0;
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-label", `Open letter: ${item.label}`);
+
+    card.innerHTML = `
+
+        <div class="mini-envelope">
+            <div class="mini-seal">♡</div>
+        </div>
+
+        <div class="card-label">${item.label}</div>
+        <div class="card-caption">${item.caption}</div>
+
+    `;
+
+    card.onclick = ()=>startExperience(index);
+    card.onkeydown = (event)=>{ if(event.key==="Enter" || event.key===" ") { event.preventDefault(); startExperience(index); } };
+
+    grid.appendChild(card);
+
+});
+
+
+/* START EXPERIENCE */
+
+function startExperience(index) {
+
+    clearTimers();
+
+    currentLetter = letters[index];
+    currentPage = 0;
+
+    const experience = document.getElementById("experience");
+    const scene = document.getElementById("scene");
+    const reading = document.getElementById("reading");
+
+    reading.classList.remove("active");
+
+    scene.className = "scene";
+    scene.dataset.color = currentLetter.color;
+
+    document.getElementById("sceneTitle").textContent =
+        currentLetter.label;
+
+    experience.classList.add("active");
+
+    // Give the scene a moment to appear
+    const firstTimer = setTimeout(()=>{
+
+        scene.classList.add("opening",`style-${index+1}`);
+
+    },350);
+
+    // Wait for the letter to slide out
+    const secondTimer = setTimeout(()=>{
+
+        scene.style.transition = "opacity .7s ease, transform .7s ease";
+        scene.style.opacity = "0";
+        scene.style.transform = "translateY(-35px) scale(.94)";
+
+    },1900);
+
+    // Reveal the reading screen
+    const thirdTimer = setTimeout(()=>{
+
+        scene.style.display = "none";
+
+        showPage();
+
+        reading.classList.add("active");
+
+    },2450);
+
+    timers.push(firstTimer,secondTimer,thirdTimer);
+
+}
+
+
+/* PAGE DISPLAY */
+
+function showPage() {
+
+    const page = currentLetter.pages[currentPage];
+
+    document.getElementById("paperIcon").textContent =
+        currentLetter.icon;
+
+    document.getElementById("paperTitle").textContent =
+        page.title;
+
+    document.getElementById("paperMessage").textContent =
+        page.text;
+
+    document.getElementById("pageNumber").textContent =
+        `${String(currentPage+1).padStart(2,"0")} / ${String(currentLetter.pages.length).padStart(2,"0")}`;
+
+    document.getElementById("prev").disabled =
+        currentPage === 0;
+
+    document.getElementById("next").disabled =
+        currentPage === currentLetter.pages.length-1;
+
+}
+
+
+/* PAGE TURNING */
+
+function changePage(direction) {
+
+    const newPage = currentPage + direction;
+
+    if(newPage < 0 || newPage >= currentLetter.pages.length) {
+        return;
+    }
+
+    currentPage = newPage;
+
+    const paper = document.querySelector(".paper");
+
+    paper.animate([
+        {opacity:0, transform:`translateX(${direction*25}px) rotate(-1deg)`},
+        {opacity:1, transform:"translateX(0) rotate(-.5deg)"}
+    ],{
+        duration:400,
+        easing:"ease-out"
+    });
+
+    showPage();
+
+}
+
+
+/* SURPRISE LETTER */
+
+function openSurprise() {
+
+    currentLetter = {
+
+        icon:"🎀",
+
+        pages:[
+
+        {
+            title:"One last little thing...",
+            text:`Tashu, life got a little more fun when we crossed paths.
+Thanks for being my favourite kind of chaos. ♡`
+        },
+
+        {
+            title:"Here's to us!",
+            text:`More laughs, more memories, more nonsense, Tashu.
+Keep being your wonderfully weird self. 🎀`
+        }
+
+        ]
+
+    };
+
+    currentPage = 0;
+
+    const experience = document.getElementById("experience");
+    const scene = document.getElementById("scene");
+
+    clearTimers();
+
+    scene.style.display = "none";
+    scene.className = "scene";
+
+    document.getElementById("sceneTitle").textContent =
+        "A special little surprise for Tashu ♡";
+
+    experience.classList.add("active");
+
+    showPage();
+
+    document.getElementById("reading").classList.add("active");
+
+}
+
+
+/* BACK HOME */
+
+function goHome() {
+
+    clearTimers();
+
+    document.getElementById("experience").classList.remove("active");
+
+    const scene = document.getElementById("scene");
+
+    scene.style.display = "block";
+    scene.style.opacity = "1";
+    scene.style.transform = "none";
+    scene.style.transition = "";
+
+    scene.className = "scene";
+
+    document.getElementById("reading").classList.remove("active");
+
+}
+
+
+/* CLEAR TIMERS */
+
+function clearTimers() {
+
+    timers.forEach(timer=>clearTimeout(timer));
+
+    timers = [];
+
+}
+
+
+/* KEYBOARD SUPPORT */
+
+document.addEventListener("keydown",e=>{
+
+    if(!document.getElementById("experience").classList.contains("active")) {
+        return;
+    }
+
+    if(e.key==="Escape") {
+        goHome();
+    }
+
+    if(e.key==="ArrowRight") {
+        changePage(1);
+    }
+
+    if(e.key==="ArrowLeft") {
+        changePage(-1);
+    }
+
+});
+
+</script>
+
+</body>
+</html>
